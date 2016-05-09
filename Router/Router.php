@@ -5,7 +5,7 @@ class Router
 	/**
 	 * @var bool Use case insensitive modifier when performing preg match?
 	 */
-	private $case_insensitive = true;
+	private $case_sensitive = false;
 
 	/**
 	 * @var string The name of the GET key that the route variable is assigned to.
@@ -15,7 +15,7 @@ class Router
 	/**
 	 * @var array Strings to add before and/or after the return string.
 	 */
-	private $return_string_modifier = [];
+	private $return_string_modifier = [null, null];
 
 	/**
 	 * @var string The original request string.
@@ -80,12 +80,12 @@ class Router
 	}
 
 	/**
-	 * Set the case insensitive value
+	 * Set the case sensitive value
 	 * @param bool $bool Will be type cast to boolean when set
 	 */
-	public function setCaseInsensitive($bool)
+	public function setCaseSensitive($bool)
 	{
-		$this->case_insensitive = (bool) $bool;
+		$this->case_sensitive = (bool) $bool;
 	}
 
 	/**
@@ -154,9 +154,9 @@ class Router
 			// escape request string
 			$regex_request = str_replace('~', '\~', $regex_request);
 
-			$case_insensitive = $this->case_insensitive ? 'i' : '' ;
+			$case_sensitive = $this->case_sensitive ? '' : 'i' ;
 
-			if (preg_match('~^'.$regex_request.'$~'.$case_insensitive, $this->request_string)) {
+			if (preg_match('~^'.$regex_request.'$~'.$case_sensitive, $this->request_string)) {
 
 				return $this->return_string_modifier[0] . $return_string . $this->return_string_modifier[1];
 			}

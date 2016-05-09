@@ -11,9 +11,9 @@ $Router->setGetKey('__request_string');
 
 
 /*
- * This is set to true by default but the method is included below so you can change it if needed.
+ * This is set to false by default but the method is included below so you can change it if needed.
  */
-$Router->setCaseInsensitive(true);
+$Router->setCaseSensitive(false);
 
 
 /*
