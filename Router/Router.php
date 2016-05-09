@@ -132,6 +132,16 @@ class Router
 	}
 
 	/**
+	 * Set or overwrite part of the request array
+	 * @param $key string
+	 * @param $value string
+	 */
+	public function setRequest($key, $value)
+	{
+		$this->request_array[$key] = $value;
+	}
+
+	/**
 	 * @param $routes_array array Keys are a regex request string and values are the path to return on match
 	 * @throws Exception if input is not an array
 	 */
