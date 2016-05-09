@@ -1,0 +1,7 @@
+Options +FollowSymLinks
+RewriteEngine On
+# Redirect any non directory/file/link request to index.php and include the request string
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^([a-z0-9/_\-]*)$ index.php?__request_string=$1 [NC,L,QSA]
