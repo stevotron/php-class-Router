@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class Router
+ * @version 1.2.0
+ */
 class Router
 {
 	/**
@@ -115,10 +119,11 @@ class Router
 
 	/**
 	 * @var string $index the index or name of the specific request element to return.
-	 * @return array|string Either an array of the full request or the requested value.
+	 * @var bool $strict throw an exception if requested index does not exist or return false.
+	 * @return array|string|bool An array of the full request, the requested value or false if requested index does not exist and $strict is false.
 	 * @throws Exception if submitted index does not exist.
 	 */
-	public function getRequest($index = null)
+	public function getRequest($index = null, $strict = true)
 	{
 		if ($index === null) {
 			return $this->request_array;
@@ -128,7 +133,11 @@ class Router
 			return $this->request_array[$index];
 		}
 
-		throw new Exception ('Request index ('.$index.') does not exist');
+		if ($strict) {
+			throw new Exception ('Request index (' . $index . ') does not exist');
+		}
+
+		return false;
 	}
 
 	/**
