@@ -70,9 +70,6 @@ class Router
 		// store individual request elements
 		$this->request_array = explode('/', $this->request_string);
 
-		// add "/" to the end of $request_string
-		$this->request_string .= '/';
-
 		$get_variables = http_build_query($_GET);
 		$get_variables = $get_variables ? '?'.$get_variables : '' ;// prefix with ?
 
