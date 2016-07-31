@@ -50,6 +50,16 @@ class Router
 	}
 
 	/**
+	 * Clears all data associated with a request
+	 */
+	public function clearRequest()
+	{
+		$this->request_string = '';
+		$this->request_with_get = '';
+		$this->request_array = [];
+	}
+
+	/**
 	 * @param string $get_key
 	 */
 	public function setGetKey($get_key)
