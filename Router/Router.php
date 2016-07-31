@@ -75,7 +75,7 @@ class Router
 	{
 		// stored cleaned request string, remove it from $_GET
 		$this->request_string = isset($_GET[$this->get_key]) ? trim($_GET[$this->get_key], '/') : '';
-		unset ($_GET[$this->get_key]);
+		unset($_GET[$this->get_key]);
 
 		// store individual request elements
 		$this->request_array = explode('/', $this->request_string);

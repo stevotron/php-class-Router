@@ -20,11 +20,11 @@ $Router->setCaseSensitive(false);
  * Array key is regex string and value is string to return if there is a match.
  */
 $Router->setRoutes([
-	'/'                   => 'home',
-	'secret/'             => 'secret',
-	'add/[\d]+/[\d]+/'    => 'adder',
-	'any-string/[\w\-]+/' => 'any-string',
-	'any-string/never/'   => 'never-reached' // this will never be reached as the regex above will be matched first
+	''                   => 'home',
+	'secret'             => 'secret',
+	'add/[\d]+/[\d]+'    => 'adder',
+	'any-string/[\w\-]+' => 'any-string',
+	'any-string/never'   => 'never-reached' // this will never be reached as the regex above will be matched first
 ]);
 
 
