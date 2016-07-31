@@ -1,6 +1,6 @@
 # php-class-Router
 
-A simple class returing a string for a defined preg mathed GET varaiable.
+A simple class returing a string for a defined preg matched GET varaiable.
 
 ## Examples
 
