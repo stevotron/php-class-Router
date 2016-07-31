@@ -18,9 +18,10 @@ $Router->setCaseSensitive(false);
 
 /*
  * Array key is regex string and value is string to return if there is a match.
+ * Trailing slashes in keys are optional, they are ignored during processing.
  */
 $Router->setRoutes([
-	''                   => 'home',
+	'/'                  => 'home',
 	'secret'             => 'secret',
 	'add/[\d]+/[\d]+'    => 'adder',
 	'any-string/[\w\-]+' => 'any-string',
@@ -54,5 +55,6 @@ else if (file_exists($returned_string)) {
 	require $returned_string;
 }
 else {
+	// Here you can choose how to handle called files that don't exist...
 	exit ('Returned path (' . $returned_string . ') does not exist');
 }
