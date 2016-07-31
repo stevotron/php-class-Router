@@ -73,8 +73,8 @@ class Router
 	 */
 	public function process()
 	{
-		// stored cleaned request string, remove it from $_GET
-		$this->request_string = isset($_GET[$this->get_key]) ? trim($_GET[$this->get_key], '/') : '';
+		// stored cleaned request string (removing trailing slash), remove it from $_GET
+		$this->request_string = isset($_GET[$this->get_key]) ? rtrim($_GET[$this->get_key], '/') : '';
 		unset($_GET[$this->get_key]);
 
 		// store individual request elements
@@ -177,8 +177,8 @@ class Router
 	{
 		foreach ($this->route_maps as $regex_request => $return_string) {
 
-			// escape request string
-			$regex_request = str_replace('~', '\~', $regex_request);
+			// escape request string and remove trailing slash if present
+			$regex_request = str_replace('~', '\~', rtrim($regex_request, '/'));
 
 			$case_sensitive = $this->case_sensitive ? '' : 'i' ;
 
